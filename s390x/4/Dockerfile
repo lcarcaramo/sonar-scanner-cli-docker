@@ -8,7 +8,7 @@ ENV JAVA_VERSION="jdk-11.0.6+10" \
 # musl setup
 #
 
-SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
+SHELL ["/bin/sh", "-eo", "pipefail", "-c"]
 
 RUN set -eux; \
     apk add --no-cache musl zlib; \
