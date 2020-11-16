@@ -15,8 +15,6 @@ RUN set -eux; \
 # AdoptOpenJDK/openjdk11 setup
 #
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
-
 WORKDIR /opt/java/openjdk
 
 RUN set -eux; \
