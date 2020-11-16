@@ -9,14 +9,7 @@ ENV JAVA_VERSION="jdk-11.0.6+10" \
 #
 
 RUN set -eux; \
-    apk add --no-cache --virtual .build-deps-full \
-        binutils-gold \
-        g++ \
-        gcc \
-        gnupg \
-        libgcc \
-        linux-headers \
-        make \
+    apk add --no-cache --virtual .build-deps \
         python3 \
         py3-pip; \
      mkdir -p /opt/java/openjdk
