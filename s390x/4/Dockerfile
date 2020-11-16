@@ -95,7 +95,7 @@ RUN set -ex \
     && grep node-${NODEJS_VERSION}-linux-s390x.tar.xz SHASUMS256.txt | sha256sum -c - \
     && tar Jxf node-${NODEJS_VERSION}-linux-s390x.tar.xz --no-same-owner \
     && rm node-${NODEJS_VERSION}-linux-s390x.tar.xz SHASUMS256.txt SHASUMS256.txt.sig /tmp/.gnupg/pubring.kbx /tmp/.gnupg/trustdb.gpg \
-    && mv node-${NODEJS_VERSION}-linux-s390x ${NODEJS_HOME} \
+    && mv node-${NODEJS_VERSION}-linux-s390x ${NODEJS_HOME}/bin \
     && npm install -g typescript@3.7.5 \
     && pip3 install --upgrade pip \
     && pip install pylint \
