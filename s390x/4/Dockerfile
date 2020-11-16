@@ -17,7 +17,8 @@ RUN set -eux; \
         libgcc \
         linux-headers \
         make \
-        python3-dev; \
+        python3 \
+        py3-pip; \
      mkdir -p /opt/java/openjdk
     
 #
