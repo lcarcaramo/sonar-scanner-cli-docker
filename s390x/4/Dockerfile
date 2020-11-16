@@ -9,8 +9,16 @@ ENV JAVA_VERSION="jdk-11.0.6+10" \
 #
 
 RUN set -eux; \
-    apk add --no-cache musl zlib; \
-        mkdir -p /opt/java/openjdk
+    apk add --no-cache --virtual .build-deps-full \
+        binutils-gold \
+        g++ \
+        gcc \
+        gnupg \
+        libgcc \
+        linux-headers \
+        make \
+        python3; \
+     mkdir -p /opt/java/openjdk
     
 #
 # AdoptOpenJDK/openjdk11 setup
