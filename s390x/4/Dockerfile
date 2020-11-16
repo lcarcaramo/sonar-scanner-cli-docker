@@ -5,10 +5,10 @@ ENV JAVA_VERSION="jdk-11.0.6+10" \
     LC_ALL='en_US.UTF-8'
 
 #
-# glibc setup
+# musl setup
 #
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 
 RUN set -eux; \
     apk add --no-cache musl zlib; \
