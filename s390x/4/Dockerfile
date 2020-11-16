@@ -74,7 +74,7 @@ RUN set -ex \
     && rm sonar-scanner-cli.zip sonar-scanner-cli.zip.asc \
     && mv sonar-scanner-${SONAR_SCANNER_VERSION} ${SONAR_SCANNER_HOME} \
     && npm install -g typescript@3.7.5 \
-    && pip3 install --upgrade pip \
+    && pip install --upgrade pip \
     && pip install pylint \
     && apk del --purge build-dependencies \
     && mkdir -p "${SRC_PATH}" "${SONAR_USER_HOME}" "${SONAR_USER_HOME}/cache"\
