@@ -48,8 +48,8 @@ RUN set -eux; \
 
 ARG SONAR_SCANNER_HOME=/opt/sonar-scanner
 ARG SONAR_SCANNER_VERSION=4.5.0.2216
-ARG UID=999
-ARG GID=999
+ARG UID=1001
+ARG GID=1001
 ENV JAVA_HOME=/opt/java/openjdk \
     HOME=/tmp \
     XDG_CONFIG_HOME=/tmp \
