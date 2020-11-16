@@ -10,7 +10,7 @@ ENV JAVA_VERSION="jdk-11.0.6+10" \
 
 RUN set -eux; \
     apk add --no-cache musl zlib; \
-        mkdir -r /opt/java/openjdk
+        mkdir -p /opt/java/openjdk
     
 #
 # AdoptOpenJDK/openjdk11 setup
