@@ -74,9 +74,6 @@ RUN set -ex \
     && mkdir -p "${SRC_PATH}" "${SONAR_USER_HOME}" "${SONAR_USER_HOME}/cache"\
     && chown -R scanner-cli:scanner-cli "${SONAR_SCANNER_HOME}" "${SRC_PATH}" \
     && chmod -R 777 "${SRC_PATH}" "${SONAR_USER_HOME}"
-    
-    
-RUN java -version
 
 COPY --chown=scanner-cli:scanner-cli bin /usr/bin/
 
