@@ -25,7 +25,7 @@ RUN set -ex; \
                             unzip \
                             gnupg \
                             git \
-                            python3 \
+                            python3-pip \
                             bash \
                             shellcheck; \
     wget -U "scannercli" -q -O /opt/sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip; \
