@@ -9,6 +9,7 @@ env:
     - REPO="quay.io/ibmz/sonar-scanner-cli"
     - TAG="$REPO:4.5.0.2216"
 before_script: 
+  - cd $BUILD_DIR && chmod +x bin/entrypoint.sh
   - cd $TEST_DIR && chmod +x $TEST_SCRIPT
   - docker login quay.io -u $ROBOT -p $ROBOT_TOKEN
 script: 
