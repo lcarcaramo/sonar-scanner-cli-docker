@@ -56,8 +56,8 @@ RUN set -ex; \
     rm node-${NODEJS_VERSION}-linux-s390x.tar.xz SHASUMS256.txt SHASUMS256.txt.sig /tmp/.gnupg/pubring.kbx /tmp/.gnupg/trustdb.gpg; \
     mv node-${NODEJS_VERSION}-linux-s390x ${NODEJS_HOME}; \
     npm install -g typescript@3.7.5; \
-    pip install --upgrade pip; \
-    pip install pylint; \
+    pip3 install --upgrade pip; \
+    pip3 install pylint; \
     apt-get remove -y wget gnupg unzip; \
     apt-get autoremove -y && apt-get clean; \
     mkdir -p "${SRC_PATH}" "${SONAR_USER_HOME}" "${SONAR_USER_HOME}/cache"; \
