@@ -11,7 +11,7 @@ SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/
 # How to use this image
 
 * Start a [`quay.io/ibmz/sonarqube:8.5.1.38104`](https://quay.io/repository/ibmz/sonarqube) container.
-> _Wait about 40 seconds for sonarqube to be ready before performing static code analysis._
+  > _Wait about 40 seconds for sonarqube to be ready before performing static code analysis._
 
 * Create a Docker volume place your source code, and a `sonar-project.properties` file in the root directory of that volume.
   ```console
