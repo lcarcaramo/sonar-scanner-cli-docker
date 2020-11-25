@@ -6,7 +6,7 @@
 
 SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/repository/ibmz/sonarqube) to perform static code analysis on source code.
 
-> :warning: This Docker image is not compatible with C/C#/C++/Objective-C projects.
+> This Docker image is not compatible with C/C#/C++/Objective-C projects.
 
 # How to use this image
 
