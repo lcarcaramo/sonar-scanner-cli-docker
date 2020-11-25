@@ -2,13 +2,17 @@ FROM quay.io/ibmz/openjdk:11.0.8
 
 ARG SONAR_SCANNER_HOME=/opt/sonar-scanner
 ARG SONAR_SCANNER_VERSION=4.5.0.2216
+ARG NODEJS_HOME=/opt/nodejs
 ARG UID=1001
 ARG GID=1001
 ENV HOME=/tmp \
     XDG_CONFIG_HOME=/tmp \
     SONAR_SCANNER_HOME=${SONAR_SCANNER_HOME} \
     SONAR_USER_HOME=${SONAR_SCANNER_HOME}/.sonar \
-    PATH=${SONAR_SCANNER_HOME}/bin:${PATH} \
+    NODEJS_HOME=${NODEJS_HOME} \
+    NODEJS_VERSION=v12.18.2 \
+    PATH=/opt/java/openjdk/bin:${SONAR_SCANNER_HOME}/bin:${NODEJS_HOME}/bin:${PATH} \
+    NODE_PATH=${NODEJS_HOME}/lib/node_modules \
     SRC_PATH=/usr/src
 
 WORKDIR /opt
@@ -32,7 +36,7 @@ RUN set -ex; \
     unzip sonar-scanner-cli.zip; \
     rm sonar-scanner-cli.zip sonar-scanner-cli.zip.asc; \
     mv sonar-scanner-${SONAR_SCANNER_VERSION} ${SONAR_SCANNER_HOME}; \
-    wget -U "nodejs" -q -O node-${NODEJS_VERSION}-linux-x64.tar.xz https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-linux-x64.tar.xz; \
+    wget -U "nodejs" -q -O node-${NODEJS_VERSION}-linux-s390x.tar.xz https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-linux-s390x.tar.xz; \
     wget -U "nodejs" -q -O SHASUMS256.txt https://nodejs.org/dist/${NODEJS_VERSION}/SHASUMS256.txt; \
     wget -U "nodejs" -q -O SHASUMS256.txt.sig https://nodejs.org/dist/${NODEJS_VERSION}/SHASUMS256.txt.sig; \
     gpg --keyserver pool.sks-keyservers.net --recv-keys DD8F2338BAE7501E3DD5AC78C273792F7D83545D; \
@@ -47,10 +51,10 @@ RUN set -ex; \
     gpg --keyserver pool.sks-keyservers.net --recv-keys 108F52B48DB57BB0CC439B2997B01419BD92F80A; \
     gpg --keyserver pool.sks-keyservers.net --recv-keys B9E2F5981AA6E0CD28160D9FF13993A75599653C; \
     gpg --verify SHASUMS256.txt.sig SHASUMS256.txt; \
-    grep node-${NODEJS_VERSION}-linux-x64.tar.xz SHASUMS256.txt | sha256sum -c -; \
-    tar Jxf node-${NODEJS_VERSION}-linux-x64.tar.xz --no-same-owner; \
-    rm node-${NODEJS_VERSION}-linux-x64.tar.xz SHASUMS256.txt SHASUMS256.txt.sig /tmp/.gnupg/pubring.kbx /tmp/.gnupg/trustdb.gpg; \
-    mv node-${NODEJS_VERSION}-linux-x64 ${NODEJS_HOME}; \
+    grep node-${NODEJS_VERSION}-linux-s390x.tar.xz SHASUMS256.txt | sha256sum -c -; \
+    tar Jxf node-${NODEJS_VERSION}-linux-s390x.tar.xz --no-same-owner; \
+    rm node-${NODEJS_VERSION}-linux-s390x.tar.xz SHASUMS256.txt SHASUMS256.txt.sig /tmp/.gnupg/pubring.kbx /tmp/.gnupg/trustdb.gpg; \
+    mv node-${NODEJS_VERSION}-linux-s390x ${NODEJS_HOME}; \
     npm install -g typescript@3.7.5; \
     pip install --upgrade pip; \
     pip install pylint; \
