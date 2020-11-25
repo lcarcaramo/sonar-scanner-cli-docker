@@ -34,6 +34,7 @@ SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/
                                    Dload  Upload   Total   Spent    Left  Speed
   100    30  100    30    0     0     41      0 --:--:-- --:--:-- --:--:--    41{"health":"GREEN","causes":[]}
   ```
+
   ```console
   $ docker run --rm \
                -e SONAR_HOST_URL="http://<host/ip where sonarqube is running>:<port if necessary>/api/system/health" \
