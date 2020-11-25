@@ -13,7 +13,7 @@ ENV HOME=/tmp \
 
 WORKDIR /opt
 
-RUN set -ex \
+RUN set -ex; \
     addgroup --system --gid ${GID} scanner-cli; \
     adduser --system --uid ${UID} --gid ${GID} --disabled-password scanner-cli; \
     apt-get update && apt-get install -y --no-install-recommends \
