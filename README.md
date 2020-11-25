@@ -1,34 +1,49 @@
-[![Build Status](https://travis-ci.org/SonarSource/sonar-scanner-cli-docker.svg?branch=master)](https://travis-ci.org/SonarSource/sonar-scanner-cli-docker)
+# Tags
+> _Built from [`quay.io/ibmz/openjdk:11.0.8`](https://quay.io/repository/ibmz/openjdk?tab=info)_
+-	[`4.5.0.2216`](https://github.com/lcarcaramo/sonar-scanner-cli-docker/blob/master/s390x/4/Dockerfile) - [![Build Status](https://travis-ci.com/lcarcaramo/sonar-scanner-cli-docker.svg?branch=master)](https://travis-ci.com/lcarcaramo/sonar-scanner-cli-docker)
 
-# SonarScanner CLI
+# What is SonarScanner CLI
 
-This is the Git repository that contains source for [SonarScanner CLI](https://github.com/SonarSource/sonar-scanner-cli) Docker images.
-Images are available on [Docker Hub](https://hub.docker.com/r/sonarsource/sonar-scanner-cli).
+SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/repository/ibmz/sonarqube) to perform static code analysis on source code.
 
-NB: These Docker images are not compatible with C/C#/C++/Objective-C projects.
+:warning: This Docker image is not compatible with C/C#/C++/Objective-C projects.
 
-Usage and configuration
---------------------------
+# How to use this image
 
-For information on how to use and configure the image, head over to the Docker section of [SonarScanner CLI docs](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/).
+* Start a `[quay.io/ibmz/sonarqube:8.5.1.38104]() container`.
+> _Wait about 40 seconds for sonarqube to be ready before performing static code analysis._
 
-Questions or Feedback
---------------------------
+* Create a Docker volume place your source code, and a `sonar-project.properties` file in the root directory of that volume.
+  ```console
+  $ docker volume create <name of your project>
+  ```
 
-For support questions ("How do I?", "I got this error, why?", ...), please first read the [documentation](https://docs.sonarqube.org) and then head to the [SonarSource forum](https://community.sonarsource.com/). There are chances that a question similar to yours has already been answered. 
+  ```properties
+  # sonar-project.properties
+  sonar.projectKey=<arbitrary.project.key>
+  sonar.projectName=<name of your project>
+  sonar.sources=/usr/src
+  sonar.language=<Language the source code is written in>
+  sonar.sourceEncoding=<encoding (ie., UTF-8)>
+   ```
 
-Be aware that this forum is a community, so the standard pleasantries ("Hi", "Thanks", ...) are expected. And if you don't get an answer to your thread, you should sit on your hands for at least three days before bumping it. Operators are not standing by. :-)
+* Once SonarQube is ready, run SonarScanner CLI to perform static code analysis on your code.
+  ```console
+  $ curl -u admin:admin http://<host/ip where sonarqube is running>:<port if necessary>/api/system/health
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                   Dload  Upload   Total   Spent    Left  Speed
+  100    30  100    30    0     0     41      0 --:--:-- --:--:-- --:--:--    41{"health":"GREEN","causes":[]}
+  ```
+  ```console
+  $ docker run --rm \
+               -e SONAR_HOST_URL="http://<host/ip where sonarqube is running>:<port if necessary>/api/system/health" \
+               -v <name of your project>:/usr/src \
+               quay.io/ibmz/sonar-scanner-cli:4.5.0.2216 \
+  ```
 
-Contributing
-------------
+See the [SonarScanner CLI](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/) documentation for more details.
 
-If you would like to see a new feature, please create a new thread in the forum ["Suggest new features"](https://community.sonarsource.com/c/suggestions/features).
-
-Please be aware that we are not actively looking for feature contributions. We typically accept minor improvements and bug-fixes.
-
-With that in mind, if you would like to submit a code contribution, please create a pull request for this repository. Please explain your motives to contribute this change: what problem you are trying to fix, what improvement you are trying to make.
-
-## License
+# License
 
 Copyright 2015-2020 SonarSource.
 
