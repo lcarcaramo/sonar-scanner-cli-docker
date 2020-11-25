@@ -42,7 +42,7 @@ SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/
                quay.io/ibmz/sonar-scanner-cli:4.5.0.2216 \
   ```
 
-See the [SonarScanner CLI](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/) documentation for more details.
+See the [SonarScanner CLI](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/) documentation for more information.
 
 # License
 
