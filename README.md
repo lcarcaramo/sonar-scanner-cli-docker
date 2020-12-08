@@ -1,8 +1,10 @@
 # Tags
-> _Built from [`quay.io/ibmz/openjdk:11.0.8`](https://quay.io/repository/ibmz/openjdk?tab=info)_
--	[`4.5.0.2216`](https://github.com/lcarcaramo/sonar-scanner-cli-docker/blob/master/s390x/4/Dockerfile) - [![Build Status](https://travis-ci.com/lcarcaramo/sonar-scanner-cli-docker.svg?branch=master)](https://travis-ci.com/lcarcaramo/sonar-scanner-cli-docker)
+> _Built from [`quay.io/ibm/openjdk:11.0.8`](https://quay.io/repository/ibm/openjdk?tab=info)_
+-	`4.5.0.2216` - [![Build Status](https://travis-ci.com/lcarcaramo/sonar-scanner-cli-docker.svg?branch=master)](https://travis-ci.com/lcarcaramo/sonar-scanner-cli-docker)
 
-# What is SonarScanner CLI
+### __[Original Source Code](https://github.com/SonarSource/sonar-scanner-cli-docker)__
+
+# SonarScanner CLI
 
 SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/repository/ibmz/sonarqube) to perform static code analysis on source code.
 
@@ -10,7 +12,7 @@ SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/
 
 # How to use this image
 
-* Start a [`quay.io/ibmz/sonarqube:8.5.1.38104`](https://quay.io/repository/ibmz/sonarqube) container.
+* Start a [`quay.io/ibm/sonarqube:8.5.1.38104`](https://quay.io/repository/ibm/sonarqube) container.
   > _Wait about 40 seconds for SonarQube to be ready before attempting to perform static code analysis._
 
 * Create a Docker volume place your source code, and a `sonar-project.properties` file in the root directory of that volume.
@@ -39,7 +41,7 @@ SonarScanner CLI is the command line tool used with [SonarQube](https://quay.io/
   $ docker run --rm \
                -e SONAR_HOST_URL="http://<host/ip where sonarqube is running>:<port if necessary>/api/system/health" \
                -v <name of your project>:/usr/src \
-               quay.io/ibmz/sonar-scanner-cli:4.5.0.2216 \
+               quay.io/ibm/sonar-scanner-cli:4.5.0.2216 \
   ```
 
 See the [SonarScanner CLI](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/) documentation for more information.
